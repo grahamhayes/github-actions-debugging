@@ -24,6 +24,9 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v2
+
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: git tag
