@@ -24,9 +24,10 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v2
-
+#     - name: Setup tmate session
+#       uses: mxschmitt/action-tmate@v2
+    - name: Run a one-line script
+      run: git pull
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: git tag
@@ -34,3 +35,10 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: run git tags
       run: git describe --tags --long
+
+  image-build:
+    needs: [build]
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: get tags
+        run: git describe --long --tags
